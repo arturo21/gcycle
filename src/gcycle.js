@@ -3,15 +3,6 @@ require("../node_modules/glider-js/glider-compat.min.js");
 Glider=require("glider-js");
 gcycle=(function(){
 	var slider;
-	function getelem(id){
-		var objeto;
-		if(typeof id==='string'){
-			objeto=document.querySelector(id);
-			if(typeof objeto==='object'){
-				return objeto;
-			}
-		}
-	};
 	function sliderglider(obj,options){
 		var index=0;
 		var slider;
@@ -40,19 +31,6 @@ gcycle=(function(){
 		}
 	}
   	return{
-  		info:function(){
-			if(slider){
-				console.log(slider);
-			}
-			else{
-				console.log("No slider INIT");
-			}
-			return 0;
-  		},
-  		log:function(msg){
-			console.log(msg);
-			return 0;
-  		},
   		run:function(options){
 			var obj;
 			var options;
@@ -63,7 +41,7 @@ gcycle=(function(){
 			}
 			else{
 				objname=options.container;
-				obj=getelem(objname);
+				obj=g(objname).getEl();
 				obj.style.overflow="hidden";
 				if(!options.getobject){
 					try{
