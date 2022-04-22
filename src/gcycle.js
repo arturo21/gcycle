@@ -41,8 +41,9 @@ gcycle=(function(){
 			}
 			else{
 				objname=options.container;
-				obj=g(objname).getEl();
-				obj.style.overflow="hidden";
+				g(objname).css({
+					'overflow':'hidden'
+				});
 				if(!options.getobject){
 					try{
 						console.warn("No se encontró parámetro GetObject.");
