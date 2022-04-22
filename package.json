@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "glider-js": "^1.7.7",
+    "webpack": "^5.72.0"
+  }
+}
