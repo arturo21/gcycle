@@ -6,7 +6,9 @@ gcycle=(function(){
 	function sliderglider(obj,options){
 		var index=0;
 		var slider;
-		slider=new Glider(obj,options);
+		var objfinal;
+		objfinal=g(obj).getEl();
+		slider=new Glider(objfinal,options);
 		if(options.autoplay==true){
 			//programación del AUTOPLAY
 			var timeint=setInterval(function(){
@@ -26,7 +28,7 @@ gcycle=(function(){
 			/////////////////////////////////
 		}
 		if(options.getobject==true){
-			console.log("Devolviendo objeto...");
+			genrl.log("Devolviendo objeto...");
 			return slider;
 		}
 	}
@@ -36,8 +38,14 @@ gcycle=(function(){
 			var options;
 			var slider;
 			var objname;
+			if(!window.genrl){
+				genrl.error("No se ha importado la librería General.JS");
+			}
+			if(!window.g){
+				genrl.error("No se ha importado la librería GDOM.JS");
+			}
 			if(!options.container){
-				console.error("No se especificó el contenedor. Vuelva a intentarlo.");
+				genrl.error("No se especificó el contenedor. Vuelva a intentarlo.");
 			}
 			else{
 				objname=options.container;
@@ -46,20 +54,20 @@ gcycle=(function(){
 				});
 				if(!options.getobject){
 					try{
-						console.warn("No se encontró parámetro GetObject.");
-						sliderglider(obj,options);
+						genrl.warn("No se encontró parámetro GetObject.");
+						sliderglider(objname,options);
 						return 0;
 					}
 					catch{
-						console.log("No se pudo crear el objeto.");
+						genrl.error("No se pudo crear el objeto.");
 					}
 				}
 				else{
 					try{
-						return sliderglider(obj,options);
+						return sliderglider(objname,options);
 					}
 					catch{
-						console.error("No se pudo crear objeto.");
+						genrl.error("No se pudo crear objeto.");
 					}
 				}
 			}
